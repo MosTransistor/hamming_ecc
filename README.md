@@ -26,6 +26,17 @@
 >3. generate verilog code, like ecc_xtox.v
 >for example: input data length: 11, will generate ecc_11to16.v. 11 means raw data length, 16 means raw data with parity length
 >
+## 数据统计/statistics
+| data length | parity length |
+| --- | --- |
+| 1 | 3 |
+| 2~4 | 4 |
+| 5~11 | 5 |
+| 12~26 | 6 |
+| 27~57 | 7 |
+| 58~120 | 8 |
+| 121~247 | 9 |
+
 ## 数据结构/database
 src -> python源代码    
 sim(Icarus Verilog + gtkwave) -> 仿真   
