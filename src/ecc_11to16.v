@@ -37,7 +37,7 @@ assign syndrome[0] = dec_in[0] ^ dec_in[2] ^ dec_in[4] ^ dec_in[6] ^ dec_in[8] ^
 assign syndrome[1] = dec_in[1] ^ dec_in[2] ^ dec_in[5] ^ dec_in[6] ^ dec_in[9] ^ dec_in[10] ^ dec_in[13] ^ dec_in[14];
 assign syndrome[2] = dec_in[3] ^ dec_in[4] ^ dec_in[5] ^ dec_in[6] ^ dec_in[11] ^ dec_in[12] ^ dec_in[13] ^ dec_in[14];
 assign syndrome[3] = dec_in[7] ^ dec_in[8] ^ dec_in[9] ^ dec_in[10] ^ dec_in[11] ^ dec_in[12] ^ dec_in[13] ^ dec_in[14];
-assign syndrome[4] = dec_in[0] ^ dec_in[1] ^ dec_in[2] ^ dec_in[3] ^ dec_in[4] ^ dec_in[5] ^ dec_in[6] ^ dec_in[7] ^ dec_in[8] ^ dec_in[9] ^ dec_in[10] ^ dec_in[11] ^ dec_in[12] ^ dec_in[13] ^ dec_in[14] ^ dec_in[15];
+assign syndrome[4] = ^dec_in[15:0];
 
 //  Decode Data output
 logic [15:0] ecc_xor;

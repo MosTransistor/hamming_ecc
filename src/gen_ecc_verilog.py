@@ -102,7 +102,11 @@ if __name__ == "__main__":
     verFile.write("//  Syndrome Logic\n")
     verFile.write("logic [{0}:0] syndrome;\n".format(parLen-1))
     for i in range(0, parLen):
-        vLogic = " ^ ".join(["dec_in[{0}]".format(j) for j in eccDict["dec"]["D"+str(i)]])
+        if i == (parLen-1):
+            vLogic = "^dec_in[{0}:0]".format(decLen)
+        else:
+            vLogic = " ^ ".join(["dec_in[{0}]".format(j) for j in eccDict["dec"]["D"+str(i)]])
+        #vLogic = " ^ ".join(["dec_in[{0}]".format(j) for j in eccDict["dec"]["D"+str(i)]])
         verFile.write("assign syndrome[{0}] = {1};\n".format(i, vLogic))
     verFile.write("\n")
     
