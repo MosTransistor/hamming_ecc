@@ -1,3 +1,10 @@
+
+//---------------------------------------------------------//
+//- Author      : W.A                                     -//
+//- Date        : Monday Oct-02-2023                      -//
+//- Description : auto generate by gen_ecc_verilog.py     -//
+//---------------------------------------------------------//
+
 module ecc_11to16(
   input   logic  [10:0]  enc_in,
   output  logic  [15:0]  enc_out,

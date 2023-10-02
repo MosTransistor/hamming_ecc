@@ -9,6 +9,7 @@
 
 import os, sys, re
 import math
+import time
 import pdb
 
 if __name__ == "__main__":
@@ -70,6 +71,14 @@ if __name__ == "__main__":
     verFile = open(verName+".v", "w")
 
     # port
+    f1 = lambda x, y: x if len(x) > y else x+" "*(y-len(x))
+    verFile.write("""
+//---------------------------------------------------------//
+//- Author      : W.A                                     -//
+//- Date        : {0}          -//
+//- Description : auto generate by gen_ecc_verilog.py     -//
+//---------------------------------------------------------//\n
+""".format(f1(time.strftime("%A %b-%d-%Y", time.localtime()), 30)))
     verFile.write("module "+ verName + "(\n")
     verFile.write("  input   logic  [{0}:0]  enc_in,\n".format(encLen))
     verFile.write("  output  logic  [{0}:0]  enc_out,\n".format(decLen))
