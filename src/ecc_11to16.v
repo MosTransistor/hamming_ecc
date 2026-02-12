@@ -1,7 +1,7 @@
 
 //---------------------------------------------------------//
 //- Author      : W.A                                     -//
-//- Date        : Monday Oct-02-2023                      -//
+//- Date        : Wednesday Feb-11-2026                   -//
 //- Description : auto generate by gen_ecc_verilog.py     -//
 //---------------------------------------------------------//
 
@@ -16,14 +16,18 @@ module ecc_11to16(
 );
 
 //- ECC Encode Logic
-assign enc_out[0] = enc_in[0] ^ enc_in[1] ^ enc_in[3] ^ enc_in[4] ^ enc_in[6] ^ enc_in[8] ^ enc_in[10];
-assign enc_out[1] = enc_in[0] ^ enc_in[2] ^ enc_in[3] ^ enc_in[5] ^ enc_in[6] ^ enc_in[9] ^ enc_in[10];
+assign enc_out[0] = enc_in[0]  ^ enc_in[1]  ^ enc_in[3]  ^ enc_in[4]  ^ enc_in[6]  ^ enc_in[8]  ^
+                    enc_in[10] ;
+assign enc_out[1] = enc_in[0]  ^ enc_in[2]  ^ enc_in[3]  ^ enc_in[5]  ^ enc_in[6]  ^ enc_in[9]  ^
+                    enc_in[10] ;
 assign enc_out[2] = enc_in[0];
-assign enc_out[3] = enc_in[1] ^ enc_in[2] ^ enc_in[3] ^ enc_in[7] ^ enc_in[8] ^ enc_in[9] ^ enc_in[10];
+assign enc_out[3] = enc_in[1]  ^ enc_in[2]  ^ enc_in[3]  ^ enc_in[7]  ^ enc_in[8]  ^ enc_in[9]  ^
+                    enc_in[10] ;
 assign enc_out[4] = enc_in[1];
 assign enc_out[5] = enc_in[2];
 assign enc_out[6] = enc_in[3];
-assign enc_out[7] = enc_in[4] ^ enc_in[5] ^ enc_in[6] ^ enc_in[7] ^ enc_in[8] ^ enc_in[9] ^ enc_in[10];
+assign enc_out[7] = enc_in[4]  ^ enc_in[5]  ^ enc_in[6]  ^ enc_in[7]  ^ enc_in[8]  ^ enc_in[9]  ^
+                    enc_in[10] ;
 assign enc_out[8] = enc_in[4];
 assign enc_out[9] = enc_in[5];
 assign enc_out[10] = enc_in[6];
@@ -31,7 +35,8 @@ assign enc_out[11] = enc_in[7];
 assign enc_out[12] = enc_in[8];
 assign enc_out[13] = enc_in[9];
 assign enc_out[14] = enc_in[10];
-assign enc_out[15] = enc_in[0] ^ enc_in[1] ^ enc_in[2] ^ enc_in[4] ^ enc_in[5] ^ enc_in[7] ^ enc_in[10];
+assign enc_out[15] = enc_in[0]  ^ enc_in[1]  ^ enc_in[2]  ^ enc_in[4]  ^ enc_in[5]  ^ enc_in[7]  ^
+                     enc_in[10] ;
 
 //- ECC Decode Logic
 //  Decode Raw Data
@@ -40,10 +45,14 @@ assign dec_raw = {dec_in[14],dec_in[13],dec_in[12],dec_in[11],dec_in[10],dec_in[
 
 //  Syndrome Logic
 logic [4:0] syndrome;
-assign syndrome[0] = dec_in[0] ^ dec_in[2] ^ dec_in[4] ^ dec_in[6] ^ dec_in[8] ^ dec_in[10] ^ dec_in[12] ^ dec_in[14];
-assign syndrome[1] = dec_in[1] ^ dec_in[2] ^ dec_in[5] ^ dec_in[6] ^ dec_in[9] ^ dec_in[10] ^ dec_in[13] ^ dec_in[14];
-assign syndrome[2] = dec_in[3] ^ dec_in[4] ^ dec_in[5] ^ dec_in[6] ^ dec_in[11] ^ dec_in[12] ^ dec_in[13] ^ dec_in[14];
-assign syndrome[3] = dec_in[7] ^ dec_in[8] ^ dec_in[9] ^ dec_in[10] ^ dec_in[11] ^ dec_in[12] ^ dec_in[13] ^ dec_in[14];
+assign syndrome[0] = dec_in[0]  ^ dec_in[2]  ^ dec_in[4]  ^ dec_in[6]  ^ dec_in[8]  ^ dec_in[10] ^
+                     dec_in[12] ^ dec_in[14] ;
+assign syndrome[1] = dec_in[1]  ^ dec_in[2]  ^ dec_in[5]  ^ dec_in[6]  ^ dec_in[9]  ^ dec_in[10] ^
+                     dec_in[13] ^ dec_in[14] ;
+assign syndrome[2] = dec_in[3]  ^ dec_in[4]  ^ dec_in[5]  ^ dec_in[6]  ^ dec_in[11] ^ dec_in[12] ^
+                     dec_in[13] ^ dec_in[14] ;
+assign syndrome[3] = dec_in[7]  ^ dec_in[8]  ^ dec_in[9]  ^ dec_in[10] ^ dec_in[11] ^ dec_in[12] ^
+                     dec_in[13] ^ dec_in[14] ;
 assign syndrome[4] = ^dec_in[15:0];
 
 //  Decode Data output
